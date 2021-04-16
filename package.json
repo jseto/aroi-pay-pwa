@@ -1,0 +1,24 @@
+{
+  "name": "aroi-pay-pwa",
+  "version": "0.1.0",
+  "description": "People's payment system for small amounts",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jseto/aroi-pay-pwa.git"
+  },
+  "keywords": [
+    "payment",
+    "pwa",
+    "qrcode"
+  ],
+  "author": "Josep Seto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jseto/aroi-pay-pwa/issues"
+  },
+  "homepage": "https://github.com/jseto/aroi-pay-pwa#readme"
+}
