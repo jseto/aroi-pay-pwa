@@ -12,9 +12,9 @@ export class QrScanner extends Component {
 	}
 
 	async componentDidMount() {
-		this.codeReader = new BrowserMultiFormatReader();
-		const videoInputDevices = await this.codeReader.listVideoInputDevices();
-		this.selectedDeviceId = videoInputDevices[0].deviceId;
+		this.codeReader = new BrowserMultiFormatReader()
+		const videoInputDevices = await this.codeReader.listVideoInputDevices()
+		this.selectedDeviceId = videoInputDevices[1]?.deviceId || videoInputDevices[0]?.deviceId
 		// codeReader.decodeFromVideoDevice(
 		// 	this.selectedDeviceId, this.videoInstance.current, ( result, error ) => {
 		// 		if ( result ) {
