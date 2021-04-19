@@ -26,8 +26,9 @@ export class QrScanner extends Component {
 	private async attachCamStream( cameraPositon: CameraPosition ) {
 		this.video.srcObject = await navigator.mediaDevices.getUserMedia({ 
 			video: {
-				width: 1600,
-				height: 1200,
+				aspectRatio: 4/3,
+				// width: 1600,
+				// height: 1200,
 				facingMode: cameraPositon
 			}
 		})
