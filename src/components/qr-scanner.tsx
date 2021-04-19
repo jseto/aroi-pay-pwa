@@ -1,5 +1,5 @@
 import { Component, createRef, RefObject } from 'preact';
-import { BrowserMultiFormatReader } from '@zxing/library'
+import { BarcodeFormat, BrowserMultiFormatReader, DecodeHintType } from '@zxing/library'
 import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'														// cSpell: disable-line
 import { faExpand } from '@fortawesome/free-solid-svg-icons'
 import { faSync } from '@fortawesome/free-solid-svg-icons'
@@ -35,7 +35,8 @@ export class QrScanner extends Component {
 
 
 	private async scanCode() {
-		this.codeReader = new BrowserMultiFormatReader()
+		const hints = new Map().set( DecodeHintType.POSSIBLE_FORMATS, [BarcodeFormat.QR_CODE] )
+		this.codeReader = new BrowserMultiFormatReader( hints, 200 )
 
 		await this.video.play()
 		const result = await this.codeReader.decodeOnceFromStream(	
