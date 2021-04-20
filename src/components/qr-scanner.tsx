@@ -1,8 +1,8 @@
 import { Component, createRef, RefObject } from 'preact';
 import { BarcodeFormat, BrowserMultiFormatReader, DecodeHintType } from '@zxing/library'
-import { FontAwesomeIcon } from '@aduh95/preact-fontawesome'														// cSpell: disable-line
-import { faExpand } from '@fortawesome/free-solid-svg-icons'
-import { faSync } from '@fortawesome/free-solid-svg-icons'
+import ExpandIcon from '@fortawesome/fontawesome-free/svgs/solid/expand.svg';
+
+import './qr-scanner.scss'
 
 type CameraPosition = 'user' | 'environment'
 
@@ -14,11 +14,6 @@ export class QrScanner extends Component {
 	}
 
 	async componentDidMount() {
-		// this.codeReader = new BrowserMultiFormatReader()
-		// const videoInputDevices = await this.codeReader.listVideoInputDevices()
-		// this.selectedDeviceId = videoInputDevices[1]?.deviceId || videoInputDevices[0]?.deviceId
-		// console.log( this.selectedDeviceId )
-		// this.scanCode()
 		await this.attachCamStream('environment')
 		this.scanCode()
 	}
@@ -27,8 +22,6 @@ export class QrScanner extends Component {
 		this.video.srcObject = await navigator.mediaDevices.getUserMedia({ 
 			video: {
 				aspectRatio: 4/3,
-				// width: 1600,
-				// height: 1200,
 				facingMode: cameraPositon
 			}
 		})
@@ -40,6 +33,7 @@ export class QrScanner extends Component {
 		this.codeReader = new BrowserMultiFormatReader( hints, 200 )
 
 		await this.video.play()
+
 		const result = await this.codeReader.decodeOnceFromStream(	
 			this.video.srcObject as MediaStream
 		)
@@ -62,7 +56,7 @@ export class QrScanner extends Component {
 		return (
 			<div className="qr-scanner">
 				<video ref={ this.videoInstance } style={{ width: '100%'}}/>
-				<FontAwesomeIcon icon={ faExpand }/>
+				<ExpandIcon />
 				<button onClick={()=>this.scanCode()}>scan</button>
 				<button onClick={()=>this.pause()}>pause</button>
 			</div>
