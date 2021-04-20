@@ -1,14 +1,25 @@
 import { Component, createRef, RefObject } from 'preact';
 import { BarcodeFormat, BrowserMultiFormatReader, DecodeHintType } from '@zxing/library'
 import ExpandIcon from '@fortawesome/fontawesome-free/svgs/solid/expand.svg';
-
 import './qr-scanner.scss'
 
 type CameraPosition = 'user' | 'environment'
 
-export class QrScanner extends Component {
+interface QrScannerState {
+	scannedCode: string
+}
+
+interface QrScannerProps {
+
+}
+
+export class QrScanner extends Component<QrScannerProps, QrScannerState> {
 	constructor( props ) {
 		super( props )
+
+		this.state = {
+			scannedCode: null
+		}
 
 		this.videoInstance = createRef()
 	}
@@ -29,6 +40,10 @@ export class QrScanner extends Component {
 
 
 	private async scanCode() {
+		this.setState({
+			scannedCode: null
+		})
+
 		const hints = new Map().set( DecodeHintType.POSSIBLE_FORMATS, [BarcodeFormat.QR_CODE] )
 		this.codeReader = new BrowserMultiFormatReader( hints, 200 )
 
@@ -40,6 +55,9 @@ export class QrScanner extends Component {
 			
 		if ( result ) {
 			this.video.pause()
+			this.setState({
+				scannedCode: result.getText()
+			})
 			console.log( result )
 		}
 	}
@@ -53,10 +71,14 @@ export class QrScanner extends Component {
 	}
 
 	render() {
+		const { scannedCode } = this.state
+		
 		return (
 			<div className="qr-scanner">
-				<video ref={ this.videoInstance } style={{ width: '100%'}}/>
-				<ExpandIcon />
+				<div className="view-finder">
+					<video ref={ this.videoInstance } style={{ width: '100%'}}/>
+					<ExpandIcon className={ scannedCode? '' : 'animate' } preserveAspectRatio="none" />
+				</div>
 				<button onClick={()=>this.scanCode()}>scan</button>
 				<button onClick={()=>this.pause()}>pause</button>
 			</div>
