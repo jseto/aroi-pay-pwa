@@ -6,7 +6,7 @@ import './code-scanner.scss'
 type CameraPosition = 'user' | 'environment'
 
 interface CodeScannerState {
-	scannedCode: string
+	videoPlaying: boolean
 }
 
 interface CodeScannerProps {
@@ -18,15 +18,19 @@ export class CodeScanner extends Component<CodeScannerProps, CodeScannerState> {
 		super( props )
 
 		this.state = {
-			scannedCode: null
+			videoPlaying: false
 		}
 
 		this.videoInstance = createRef()
 	}
 
 	async componentDidMount() {
-		await this.attachCamStream('environment')
 		this.scanCode()
+	}
+
+	componentWillUnmount() {
+		this.video.pause()
+		this.stream.getTracks().forEach( track => track.stop() )
 	}
 
 	private async attachCamStream( cameraPositon: CameraPosition ) {
@@ -38,10 +42,11 @@ export class CodeScanner extends Component<CodeScannerProps, CodeScannerState> {
 		})
 	}
 
-
 	async scanCode() {
+		await this.attachCamStream('environment')
+
 		this.setState({
-			scannedCode: null
+			videoPlaying: true
 		})
 
 		const hints = new Map().set( DecodeHintType.POSSIBLE_FORMATS, [BarcodeFormat.QR_CODE] )
@@ -54,32 +59,40 @@ export class CodeScanner extends Component<CodeScannerProps, CodeScannerState> {
 		)
 			
 		if ( result ) {
-			this.video.pause()
-			this.setState({
-				scannedCode: result.getText()
-			})
-
 			const { onCodeScanned } = this.props
-
-			if ( onCodeScanned ) onCodeScanned( result.getText() )
+			
+			this.pause()
+			onCodeScanned?.( result.getText() )
 		}
 	}
 
 	get video() { 
-		return this.videoInstance.current
+		return this.videoInstance.current 
+	}
+
+	get stream(): MediaStream {
+		return this.video.srcObject as MediaStream
+	}
+
+	pause() {
+		this.video.pause()
+		this.stream.getTracks().forEach( track => track.stop() )
+		this.setState({
+			videoPlaying: false
+		})
 	}
 
 	render() {
-		const { scannedCode } = this.state
+		const { videoPlaying } = this.state
 
 		return (
 			<div className="qr-scanner">
 				<div className="view-finder">
 					<video ref={ this.videoInstance } style={{ width: '100%'}}/>
-					<ExpandIcon className={ scannedCode? '' : 'animate' } preserveAspectRatio="none" />
+					<ExpandIcon className={ videoPlaying? 'animate' : '' } preserveAspectRatio="none" />
 				</div>
 				<button onClick={()=>this.scanCode()}>scan</button>
-				<button onClick={()=>this.video.pause()}>pause</button>
+				<button onClick={()=>this.pause()}>pause</button>
 			</div>
 		)
 	}

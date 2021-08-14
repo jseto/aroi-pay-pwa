@@ -1,0 +1,20 @@
+{
+	"Generic": {
+		"or": "or",
+		"and": "and",
+		"standardPlural": "s",
+		"optional": "Optional",
+		"notSet": "Not set",
+		"close": "Close",
+		"cancel": "Cancel",
+		"select": "Select",
+		"add": "Add",
+		"update": "Update",
+		"edit": "Edit",
+		"delete": "Delete",
+		"remove": "Remove",
+		"addWithName": "Add ${ documentClassName }",
+		"updateWithName": "Update ${ documentClassName }",
+		"editWithName": "Edit ${ documentClassName }"
+	}
+}

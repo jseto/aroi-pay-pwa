@@ -1,5 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { MainMenu } from './main-page/main-menu'
+import { Locale } from '@entropic-bond/localize-react'
+import { MainView } from './main-view/main-view'
 
-render(<MainMenu/>, document.getElementsByTagName('App')[0]);
+Locale.config({
+	localePath: 'locales' 
+})
+
+render(<MainView/>, document.getElementsByTagName('App')[0]);
