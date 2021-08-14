@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
-import { MainPage } from './main-page'
+import { MainMenu } from './main-menu'
 
-describe('Main Page', ()=>{
+describe('Main Menu', ()=>{
 
 	beforeEach(()=>{
-		render(<MainPage />)	
+		render(<MainMenu />)	
 	})
 
 	describe('Bottom navigation buttons', ()=>{

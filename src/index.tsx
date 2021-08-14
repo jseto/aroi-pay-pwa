@@ -1,5 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { MainPage } from './main-page/main-page'
+import { MainMenu } from './main-page/main-menu'
 
-render(<MainPage/>, document.getElementsByTagName('App')[0]);
+render(<MainMenu/>, document.getElementsByTagName('App')[0]);

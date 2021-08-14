@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/jseto/aroi-pay-pwa#readme",
   "devDependencies": {
+    "@entropic-bond/localize-react": "^1.0.1",
     "@entropic-bond/menu-bar": "file:../../entropic-bond-project/menu-bar",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@testing-library/jest-dom": "^5.14.1",
