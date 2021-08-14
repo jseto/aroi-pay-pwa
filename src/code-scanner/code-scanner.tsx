@@ -1,19 +1,19 @@
-import { Component, createRef, RefObject } from 'preact';
+import React, { Component, createRef, RefObject } from 'react';
 import { BarcodeFormat, BrowserMultiFormatReader, DecodeHintType } from '@zxing/library'
 import ExpandIcon from '@fortawesome/fontawesome-free/svgs/solid/expand.svg';
-import './qr-scanner.scss'
+import './code-scanner.scss'
 
 type CameraPosition = 'user' | 'environment'
 
-interface QrScannerState {
+interface CodeScannerState {
 	scannedCode: string
 }
 
-interface QrScannerProps {
-
+interface CodeScannerProps {
+	onCodeScanned: ( code: string ) => void
 }
 
-export class QrScanner extends Component<QrScannerProps, QrScannerState> {
+export class CodeScanner extends Component<CodeScannerProps, CodeScannerState> {
 	constructor( props ) {
 		super( props )
 
@@ -39,7 +39,7 @@ export class QrScanner extends Component<QrScannerProps, QrScannerState> {
 	}
 
 
-	private async scanCode() {
+	async scanCode() {
 		this.setState({
 			scannedCode: null
 		})
@@ -58,12 +58,11 @@ export class QrScanner extends Component<QrScannerProps, QrScannerState> {
 			this.setState({
 				scannedCode: result.getText()
 			})
-			console.log( result )
-		}
-	}
 
-	private pause() {
-		this.video.pause()
+			const { onCodeScanned } = this.props
+
+			if ( onCodeScanned ) onCodeScanned( result.getText() )
+		}
 	}
 
 	get video() { 
@@ -72,7 +71,7 @@ export class QrScanner extends Component<QrScannerProps, QrScannerState> {
 
 	render() {
 		const { scannedCode } = this.state
-		
+
 		return (
 			<div className="qr-scanner">
 				<div className="view-finder">
@@ -80,7 +79,7 @@ export class QrScanner extends Component<QrScannerProps, QrScannerState> {
 					<ExpandIcon className={ scannedCode? '' : 'animate' } preserveAspectRatio="none" />
 				</div>
 				<button onClick={()=>this.scanCode()}>scan</button>
-				<button onClick={()=>this.pause()}>pause</button>
+				<button onClick={()=>this.video.pause()}>pause</button>
 			</div>
 		)
 	}

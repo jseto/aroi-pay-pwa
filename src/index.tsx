@@ -1,13 +1,5 @@
-import { h, render } from 'preact'
-import { QrScanner } from './components/qr-scanner';
+import React from 'react'
+import { render } from 'react-dom'
+import { MainPage } from './main-page/main-page'
 
-function App() {
-	return (
-		<>
-			<h1>Hi there</h1>
-			<QrScanner />
-		</>
-	)
-}
-
-render(<App/>, document.getElementsByTagName('App')[0]);
+render(<MainPage/>, document.getElementsByTagName('App')[0]);

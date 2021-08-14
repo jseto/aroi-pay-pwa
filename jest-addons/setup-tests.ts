@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom/extend-expect'
 
-import * as preact from 'preact';
+import * as React from 'react';
 
 declare global {
-	var h: typeof preact.h;
+	var React: typeof React;
 }
 
-global[ 'h' ] = preact.h;
+global[ 'React' ] = React;
