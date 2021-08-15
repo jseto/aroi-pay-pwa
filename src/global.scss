@@ -1,8 +1,50 @@
-$color: hsl(240, 15%, 95%);
-$background-color: hsl(207, 25%, 15%);
-$button-background-color: hsl(197, 43%, 39%);
+//https://icolorpalette.com/imagepalette/color-palette-ideas-from-food-image-6#allclorswindow
+$dark-velvet: #24354d;
+$light-velvet: #3d445a;
+$pale-red: #cd4c6a;
+$pale-caoba: #bc5c5c;
+$stain: #4c748c;
+$whitish: #f3e1d7;
+
+// $color: $whitish;
+// $highlight-color: $pale-red;
+// $background-color: $dark-velvet;
+// $highlight-background-color: $light-velvet;
+// $button-color: $pale-caoba;
+// $highlight-button-color: $pale-red;
+
+//https://offeo.com/learn/food-color-palette/#5
+// $crimson: #D82315;
+// $dark-olive: #2F1710;
+// $dark-slate: #425164;
+// $tan: #DABB96;
+// $light-slate: #899FB6;
+
+// $color: $dark-olive;
+// $highlight-color: $crimson;
+// $background-color: $tan;
+// $highlight-background-color: $dark-slate;
+// $button-color: $dark-slate;
+// $highlight-button-color: $light-slate;
+
+$base-color: #cb3b14;
+$dim-base-color: #a43112;
+$highlight-base-color: #b1685d;
+
+$color: #707070;
+$highlight-color: $base-color;
+$background-color: white;
+$highlight-background-color: #fff9e6;
+$button-text-color: white;
+$button-color: $base-color;
+$highlight-button-color: $dim-base-color;
+$hover-button-color: $highlight-base-color;
+
+
 $error-color: hsl(0, 86%, 61%);
 $pass-color: hsl(120, 100%, 25% );
+
+$border-radius: 0px;
 
 @function highlight( $color, $amount ) {
 	@return lighten( $color, $amount )

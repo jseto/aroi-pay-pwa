@@ -1,8 +1,8 @@
+import './main.scss'
 import React, { Component } from 'react'
 import { MenuBar } from '@entropic-bond/menu-bar'
 import { StateWithLocale } from '@entropic-bond/localize-react'
 import { CodeScanner } from '../code-scanner/code-scanner'
-import './main.scss'
 
 type MainViewProps = StateWithLocale<{
 	scanedText: string
@@ -14,6 +14,7 @@ export class MainView extends Component<{}, MainViewProps> {
 
 		return (
 			<div className="main-view">
+				<h1>Aroi pay</h1>
 				<MenuBar
 					menuItems={[
 						{ caption: 'Scan' },
