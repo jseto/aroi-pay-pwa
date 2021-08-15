@@ -2,10 +2,10 @@ import './main-view/main.scss'
 import React from 'react'
 import { render } from 'react-dom'
 import { Locale } from '@entropic-bond/localize-react'
-import { MainView } from './main-view/main-view'
+import { MainPanel } from './main-view/main-panel'
 
 Locale.config({
 	localePath: 'locales' 
 })
 
-render(<MainView/>, document.getElementsByTagName('App')[0]);
+render(<MainPanel/>, document.getElementsByTagName('App')[0]);

@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import { MenuBar } from '@entropic-bond/menu-bar'
-import { StateWithLocale } from '@entropic-bond/localize-react'
 import { ScannerView } from './scanner-view'
 import ScanIcon from '@fortawesome/fontawesome-free/svgs/solid/barcode.svg'
 import FoodIcon from '@fortawesome/fontawesome-free/svgs/solid/concierge-bell.svg'
 import UserIcon from '@fortawesome/fontawesome-free/svgs/solid/user-cog.svg'
-import './main-menu.scss'
+import './main-panel.scss'
 
-type MainViewState = StateWithLocale<{
+type MainViewPanel = {
 	activeMenu: number
-}>
+}
 
-export class MainView extends Component<{}, MainViewState> {
+export class MainPanel extends Component<{}, MainViewPanel> {
 	constructor( props: {} ) {
 		super( props )
 		this.state = {
@@ -23,7 +22,7 @@ export class MainView extends Component<{}, MainViewState> {
 		const { activeMenu } = this.state
 
 		return (
-			<div className="main-view">
+			<div className="main-panel">
 				<MenuBar
 					className="main-menu"
 					menuItems={[
