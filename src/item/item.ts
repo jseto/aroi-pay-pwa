@@ -1,7 +1,23 @@
-import { Persistent } from 'entropic-bond'
+import { EntropicComponent, persistent } from 'entropic-bond'
 
-export class Item extends Persistent {
+export class Item extends EntropicComponent {
 	
-	private _name: string
-	private _price: number
+	set name( value: string ) {
+		this.changeProp( 'name', value )
+	}
+	
+	get name(): string {
+		return this._name
+	}
+	
+	set price( value: number ) {
+		this.changeProp( 'price', value )
+	}
+	
+	get price(): number {
+		return this._price
+	}
+	
+	@persistent private _name: string
+	@persistent private _price: number
 }

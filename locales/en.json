@@ -16,5 +16,8 @@
 		"addWithName": "Add ${ documentClassName }",
 		"updateWithName": "Update ${ documentClassName }",
 		"editWithName": "Edit ${ documentClassName }"
+	},
+	"ScannerView": {
+		"enterCode": "Enter Code"
 	}
 }

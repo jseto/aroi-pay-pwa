@@ -1,3 +1,11 @@
+@function highlight( $color, $amount ) {
+	@return lighten( $color, $amount )
+};
+
+@function dim( $color, $amount ) {
+	@return darken( $color, $amount )
+};
+
 //https://icolorpalette.com/imagepalette/color-palette-ideas-from-food-image-6#allclorswindow
 $dark-velvet: #24354d;
 $light-velvet: #3d445a;
@@ -39,17 +47,10 @@ $button-text-color: white;
 $button-color: $base-color;
 $highlight-button-color: $dim-base-color;
 $hover-button-color: $highlight-base-color;
+$placeholder-color: dim( $color, 50% );
 
 
 $error-color: hsl(0, 86%, 61%);
 $pass-color: hsl(120, 100%, 25% );
 
 $border-radius: 0px;
-
-@function highlight( $color, $amount ) {
-	@return lighten( $color, $amount )
-};
-
-@function dim( $color, $amount ) {
-	@return darken( $color, $amount )
-};
