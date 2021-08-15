@@ -3,6 +3,8 @@ import { MenuBar } from '@entropic-bond/menu-bar'
 import { StateWithLocale } from '@entropic-bond/localize-react'
 import { ScannerView } from './scanner-view'
 import ScanIcon from '@fortawesome/fontawesome-free/svgs/solid/barcode.svg'
+import FoodIcon from '@fortawesome/fontawesome-free/svgs/solid/concierge-bell.svg'
+import UserIcon from '@fortawesome/fontawesome-free/svgs/solid/user-cog.svg'
 import './main-menu.scss'
 
 type MainViewState = StateWithLocale<{
@@ -26,12 +28,14 @@ export class MainView extends Component<{}, MainViewState> {
 					className="main-menu"
 					menuItems={[
 						{ caption: <ScanIcon/> },
-						{ caption: <ScanIcon/> }
+						{ caption: <FoodIcon/> },
+						{ caption: <UserIcon/> }
 					]}
 					activeIndex={ activeMenu }
 					position="bottom"
 				>
 					<ScannerView />
+					<div></div>
 					<div></div>
 				</MenuBar>
 			</div>

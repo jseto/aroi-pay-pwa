@@ -20,9 +20,14 @@
 			}
 
 			svg {
-				// width: 2em;
 				height: 100%;
+				&:last-child {
+					// position: absolute;
+					// right: 0;
+					float: right;
+				}
 			}
+
 		}
 	}
 }
