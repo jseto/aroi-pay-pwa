@@ -10,14 +10,10 @@ html {
 }
 
 body {
-	font-family: "Roboto", sans-serif;
+	font-family: "Roboto", serif;
 	background-color: $background-color;
 	color: $color;
-	max-width: 1025px;
 	margin: auto;
-	font-weight: 300;
-	font-size: 15px;
-	// padding: 0.5em;
 }
 
 h1, h2, h3, h4, h5, h6 {

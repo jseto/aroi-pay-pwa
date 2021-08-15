@@ -1,0 +1,28 @@
+@import "../global";
+
+.main-view {
+	height: 100vh;
+	
+	.main-menu {
+		position: relative;
+		height: 100%;
+
+		.button-bar {
+			position: absolute;
+			bottom: 0;
+			margin-bottom: 0;
+			background-color: $highlight-background-color;
+			width: 100%;
+			height: 4em;
+
+			> * {
+				padding: 0.5em;
+			}
+
+			svg {
+				// width: 2em;
+				height: 100%;
+			}
+		}
+	}
+}

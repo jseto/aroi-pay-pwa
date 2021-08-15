@@ -1,9 +1,9 @@
-import './main.scss'
 import React, { Component } from 'react'
 import { MenuBar } from '@entropic-bond/menu-bar'
 import { StateWithLocale } from '@entropic-bond/localize-react'
 import { ScannerView } from './scanner-view'
 import ScanIcon from '@fortawesome/fontawesome-free/svgs/solid/barcode.svg'
+import './main-menu.scss'
 
 type MainViewState = StateWithLocale<{
 	activeMenu: number
@@ -22,8 +22,8 @@ export class MainView extends Component<{}, MainViewState> {
 
 		return (
 			<div className="main-view">
-				<h1>Aroi pay</h1>
 				<MenuBar
+					className="main-menu"
 					menuItems={[
 						{ caption: <ScanIcon/> },
 						{ caption: <ScanIcon/> }

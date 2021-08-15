@@ -2,6 +2,7 @@ import { localize, StateWithLocale } from '@entropic-bond/localize-react'
 import React, { Component } from 'react'
 import { CodeScanner } from '../code-scanner/code-scanner'
 import FindIcon from '@fortawesome/fontawesome-free/svgs/solid/search.svg'
+import './scanner-view.scss'
 
 interface ScannerViewProps {
 	onScan?: ( code: string ) => void
