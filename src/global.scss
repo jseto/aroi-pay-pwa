@@ -31,10 +31,10 @@ $base-color: #cb3b14;
 $dim-base-color: #a43112;
 $highlight-base-color: #b1685d;
 
-$color: #707070;
+$color: hsl(0, 20%, 85%);
 $highlight-color: $base-color;
-$background-color: white;
-$highlight-background-color: #fff9e6;
+$background-color: hsl(0, 3%, 14%);
+$highlight-background-color: $highlight-base-color;
 $button-text-color: white;
 $button-color: $base-color;
 $highlight-button-color: $dim-base-color;
