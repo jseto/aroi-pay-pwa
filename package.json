@@ -5,7 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve",
+    "dev-beta": "webpack serve --env runMode=beta",
+    "dev-emulator": "npm run emulators && webpack serve --env runMode=emulators",
     "build": "webpack --mode=production",
+    "build-beta": "webpack --mode=production --env runMode=beta",
+    "deploy": "firebase deploy --project=production --only hosting",
+    "deploy-beta": "firebase deploy --project=beta --only hosting",
+    "emulators": "firebase emulators:start --project demo-test",
     "test": "jest",
     "debug": "node --inspect-brk node_modules/.bin/jest --runInBand --coverage false"
   },
@@ -25,6 +31,7 @@
   },
   "homepage": "https://github.com/jseto/aroi-pay-pwa#readme",
   "devDependencies": {
+    "@entropic-bond/crud-panel": "^1.1.0",
     "@entropic-bond/localize-react": "^1.0.1",
     "@entropic-bond/menu-bar": "file:../../entropic-bond-project/menu-bar",
     "@fortawesome/fontawesome-free": "^5.15.4",
@@ -44,6 +51,7 @@
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-dropzone": "^11.3.4",
     "sass-loader": "^12.1.0",
     "svg-loader": "^0.0.2",
     "ts-jest": "^27.0.4",

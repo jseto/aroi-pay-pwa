@@ -1,6 +1,6 @@
 import { EntropicComponent, persistent } from 'entropic-bond'
 
-export class Item extends EntropicComponent {
+export class Product extends EntropicComponent {
 	
 	set name( value: string ) {
 		this.changeProp( 'name', value )

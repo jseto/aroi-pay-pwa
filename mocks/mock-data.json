@@ -1,0 +1,26 @@
+{
+	"User": {
+		"user1": {
+			"__className": "User",
+			"email": "admin@test.com",
+			"id": "user1__from_auth",
+			"name": "Test user 1",
+			"thumbnail": {
+				"id": "user1Avatar",
+				"__className": "StoredFile",
+				"reference": "user1Avatar",
+				"cloudStorageProviderName": "MockCloudStorage",
+				"originalFileName": "avatar3.jpg",
+				"url": "mocks/avatar1.png"
+			}
+		},
+		"user2": {
+			"__className": "User",
+			"id": "user2__from_auth",
+			"name": "Test user 2"
+		}
+	},
+	"Product": {
+		
+	}
+}

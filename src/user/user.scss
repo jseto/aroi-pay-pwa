@@ -1,0 +1,23 @@
+.user-view {
+	display: flex;
+	// flex-wrap: wrap;
+	
+	.image-upload {
+		height: fit-content;
+	}
+
+	.text-data {
+		input {
+			display: block;
+		}
+
+		.user-name {
+			font-size: larger;
+			font-weight: bold;
+		}
+
+		select {
+			max-width: 7em;
+		}
+	}
+}

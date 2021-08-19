@@ -1,7 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 module.exports = ( env, arg ) => {
+	const runMode = arg.env.runMode || ( arg.mode==='production'? 'production' : 'mocks' )
+
+	console.info( '\x1b[33m', `Running webpack for ${ runMode }\n` )
+
 	return {
 		mode: 'development',
 		entry: {
@@ -80,6 +85,9 @@ module.exports = ( env, arg ) => {
 				},
 				hash: true,
 			}),
+			new webpack.DefinePlugin({
+				'process.env.RUN_MODE': JSON.stringify( runMode ),
+			})
 		]
 	}
 }
