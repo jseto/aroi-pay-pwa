@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = ( env, arg ) => {
@@ -18,9 +19,6 @@ module.exports = ( env, arg ) => {
 		devtool: 'source-map',
 		resolve: {
 			extensions: [ '.ts', '.tsx', '.js', '.jsx' ]
-		},
-		devServer: {
-			host: '0.0.0.0'
 		},
 		module: {
 			rules: [
@@ -84,6 +82,11 @@ module.exports = ( env, arg ) => {
 					title: 'Aroi Pay'
 				},
 				hash: true,
+			}),
+			new CopyWebpackPlugin({ 
+				patterns: [
+					{ from: 'locales/*' }
+				]
 			}),
 			new webpack.DefinePlugin({
 				'process.env.RUN_MODE': JSON.stringify( runMode ),
